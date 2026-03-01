@@ -29,13 +29,13 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
-<meta property="og:site_name" content="Murinsk Suburb">
-<meta property="og:title" content="Пригород Муринска — район в Minecraft">
+<meta property="og:site_name" content="Murinsk - Suburb">
+<meta property="og:title" content="Муринск - Пригород">
 <meta property="og:description" content="Страница пригорода Муринска: карта, скриншоты и развитие пригородной территории в Minecraft.">
 <meta property="og:url" content="https://suburb.visitmurinsk.ru/">
 <meta property="og:image" content="https://suburb.visitmurinsk.ru/IMG_3825.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Пригород Муринска — район в Minecraft">
+<meta name="twitter:title" content="Муринск - Пригород">
 <meta name="twitter:description" content="Страница пригорода Муринска: карта, скриншоты и развитие пригородной территории в Minecraft.">
 <meta name="twitter:image" content="https://suburb.visitmurinsk.ru/IMG_3825.png">
 <link rel="canonical" href="https://suburb.visitmurinsk.ru/">
@@ -46,7 +46,7 @@
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Murinsk Suburb",
+  "name": "Murinsk - Suburb",
   "url": "https://suburb.visitmurinsk.ru/",
   "inLanguage": ["ru", "en"],
   "description": "Страница пригорода Муринска в Minecraft",
@@ -64,7 +64,7 @@
   "url": "https://www.minecraft.net/",
   "subjectOf": {
     "@type": "CreativeWork",
-    "name": "Murinsk Suburb"
+    "name": "Murinsk - Suburb"
   }
 }</script>
 
@@ -236,18 +236,19 @@ overflow:hidden;
 position:absolute;
 width:20px;
 height:20px;
-fill:currentColor;
-/* Добавлено управление трансформацией */
-transition: transform .5s cubic-bezier(.4,0,.2,1), opacity .3s;
+fill:none;
+stroke:currentColor;
+stroke-width:1.8;
+stroke-linecap:round;
+stroke-linejoin:round;
+transition:transform .45s cubic-bezier(.4,0,.2,1),opacity .3s;
 }
 
-/* Солнце в центре, Луна спрятана справа с поворотом */
-#sun{opacity:1; transform: translateX(0) rotate(0deg);}
-#moon{opacity:0; transform: translateX(15px) rotate(90deg);}
+#sun{opacity:1;transform:scale(1) rotate(0deg)}
+#moon{opacity:0;transform:scale(.5) rotate(-30deg)}
 
-/* При темной теме: Солнце уходит вправо, Луна встает в центр */
-body.dark #sun{opacity:0; transform: translateX(15px) rotate(90deg);}
-body.dark #moon{opacity:1; transform: translateX(0) rotate(0deg);}
+body.dark #sun{opacity:0;transform:scale(.5) rotate(30deg)}
+body.dark #moon{opacity:1;transform:scale(1) rotate(0deg)}
 
 
 #menuBtn{
@@ -405,10 +406,11 @@ contain-intrinsic-size:1px 900px;
 
         <button id="themeBtn" type="button" aria-label="Переключить тему">
           <svg id="sun" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-15v3m0 14v3M4.22 4.22l2.12 2.12m11.32 11.32 2.12 2.12M2 12h3m14 0h3M4.22 19.78l2.12-2.12m11.32-11.32 2.12-2.12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
           </svg>
           <svg id="moon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M20.354 15.354A9 9 0 1 1 8.646 3.646a7 7 0 1 0 11.708 11.708Z"/>
+            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
           </svg>
         </button>
 
@@ -1201,7 +1203,7 @@ lang='ru';
 const translations={
 ru:{
 meta:{
-title:'Пригород Муринска — район в Minecraft',
+title:'Муринск - Пригород',
 description:'Пригород Муринска в Minecraft: районы, карта, скриншоты и развитие пригородной территории проекта Murinsk.'
 },
 nav:{home:'Главная',gallery:'Галерея',history:'История',review:'Оставить отзыв'},
@@ -1218,7 +1220,7 @@ footer:'© Murinsk 2026 · Все права защищены'
 },
 en:{
 meta:{
-title:'Murinsk Suburb — district in Minecraft',
+title:'Murinsk - Suburb',
 description:'Murinsk Suburb in Minecraft: districts, map, screenshots, and development of Murinsk suburban area.'
 },
 nav:{home:'Home',gallery:'Gallery',history:'History',review:'Leave a review'},
