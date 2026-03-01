@@ -70,7 +70,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="/IMG_3489.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://visitmurinsk.ru/IMG_3489.png" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -396,7 +396,34 @@ contain-intrinsic-size:1px 900px;
 </div>
 
 
-<header id="menu-container"></header>
+<header id="menu-container">
+    <div class="header-inner">
+      <a class="logo" href="https://visitmurinsk.ru/" aria-label="Murinsk">MURINSK</a>
+
+      <div class="controls">
+        <button id="langBtn" type="button" aria-label="Сменить язык">RU</button>
+
+        <button id="themeBtn" type="button" aria-label="Переключить тему">
+          <svg id="sun" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-15v3m0 14v3M4.22 4.22l2.12 2.12m11.32 11.32 2.12 2.12M2 12h3m14 0h3M4.22 19.78l2.12-2.12m11.32-11.32 2.12-2.12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <svg id="moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.354 15.354A9 9 0 1 1 8.646 3.646a7 7 0 1 0 11.708 11.708Z"/>
+          </svg>
+        </button>
+
+        <button id="menuBtn" type="button" aria-label="Открыть меню" aria-controls="menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav id="menu" aria-label="Основная навигация">
+        <a href="https://visitmurinsk.ru/" data-i18n="nav.home">Главная</a>
+        <a href="https://visitmurinsk.ru/#photos" data-i18n="nav.gallery">Галерея</a>
+      </nav>
+    </div>
+</header>
 
 <main>
     <style>
@@ -432,11 +459,11 @@ contain-intrinsic-size:1px 900px;
     left: 0;
     width: 100%;
     height: 120%;
-    background-image: url('IMG_3489.png');
+    background-image: url('https://visitmurinsk.ru/IMG_3489.png');
     background-size: cover;
     background-position: center;
     background-attachment: scroll;
-    z-index: -1;
+    z-index: 0;
     will-change: transform;
     transform: translate3d(0, 0, 0);
 }
@@ -444,6 +471,8 @@ contain-intrinsic-size:1px 900px;
 
     /* Текст */
     .parallax-content {
+        position: relative;
+        z-index: 1;
         color: white;
         text-align: center;
         font-family: sans-serif;
@@ -967,11 +996,11 @@ contain-intrinsic-size:1px 900px;
                 <h3 class="block-title">атмосфера города</h3>
                 <div class="photo-grid">
                     <figure>
-                        <img src="IMG_3489.png" alt="Панорама Муринска" loading="eager" fetchpriority="high" decoding="async">
+                        <img src="https://visitmurinsk.ru/IMG_3489.png" alt="Панорама Муринска" loading="eager" fetchpriority="high" decoding="async">
                         <figcaption>Панорамный вид на центр.</figcaption>
                     </figure>
                     <figure>
-                        <img src="IMG_3825.png" alt="Ночной Муринск" loading="lazy" decoding="async">
+                        <img src="https://visitmurinsk.ru/IMG_3825.png" alt="Ночной Муринск" loading="lazy" decoding="async">
                         <figcaption>Ночная подсветка и ритм улиц.</figcaption>
                     </figure>
                 </div>
@@ -998,6 +1027,10 @@ contain-intrinsic-size:1px 900px;
 const menuContainer=document.getElementById('menu-container');
 const menuCacheKey='murinsk-menu-cache-v1';
 const cachedMenu=localStorage.getItem(menuCacheKey);
+
+if(menuContainer.querySelector('#menuBtn')){
+initializeMenuFunctions();
+}
 
 if(cachedMenu){
 menuContainer.innerHTML=cachedMenu;
