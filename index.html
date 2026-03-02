@@ -182,9 +182,26 @@ padding:14px 18px;
 font-family:'Unbounded',sans-serif;
 font-weight:700;
 font-size:18px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:2px;
+line-height:1;
 position:relative;
 z-index:2;
 pointer-events:auto
+}
+
+.logo-main{
+display:block;
+}
+
+.logo-sub{
+display:block;
+font-size:10px;
+font-weight:600;
+letter-spacing:.08em;
+text-transform:lowercase;
 }
 
 .logo,
@@ -407,7 +424,10 @@ contain-intrinsic-size:1px 900px;
 
 <header id="menu-container">
     <div class="header-inner">
-      <a class="logo" href="https://suburb.visitmurinsk.ru/" aria-label="Murinsk">Murinsk</a>
+      <a class="logo" href="https://suburb.visitmurinsk.ru/" aria-label="Murinsk">
+        <span class="logo-main">Murinsk</span>
+        <span class="logo-sub" data-i18n="logo.suburb">пригород</span>
+      </a>
 
       <div class="controls">
         <button id="langBtn" type="button" aria-label="Сменить язык">RU</button>
@@ -1222,6 +1242,7 @@ meta:{
 title:'Муринск - Пригород',
 description:'Пригород Муринска в Minecraft: районы, карта, скриншоты и развитие пригородной территории проекта Murinsk.'
 },
+logo:{suburb:'пригород'},
 nav:{home:'Главная',gallery:'Галерея',history:'История',review:'Оставить отзыв'},
 hero:{title:'Добро пожаловать!'},
 content:{
@@ -1239,6 +1260,7 @@ meta:{
 title:'Murinsk - Suburb',
 description:'Murinsk Suburb in Minecraft: districts, map, screenshots, and development of Murinsk suburban area.'
 },
+logo:{suburb:'suburb'},
 nav:{home:'Home',gallery:'Gallery',history:'History',review:'Leave a review'},
 hero:{title:'Welcome!'},
 content:{
