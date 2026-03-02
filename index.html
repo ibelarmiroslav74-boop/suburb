@@ -157,6 +157,7 @@ backdrop-filter:blur(22px) saturate(165%);
 border-radius:999px;
 box-shadow:0 14px 36px var(--shadow), inset 0 1px 0 var(--glass-pill-highlight);
 position:relative;
+isolation:isolate;
 overflow:hidden;
 overflow:visible;
 }
@@ -169,6 +170,7 @@ background:linear-gradient(120deg,transparent 18%,color-mix(in srgb,var(--glass-
 opacity:.55;
 pointer-events:none;
 mix-blend-mode:screen;
+z-index:0;
 }
 
 @media (max-width:768px){
@@ -214,7 +216,12 @@ color:var(--text);
 text-decoration:none;
 }
 
-.controls{display:flex;gap:10px}
+.controls{
+display:flex;
+gap:10px;
+position:relative;
+z-index:2;
+}
 
 button{
 border:1px solid color-mix(in srgb,var(--control-border) 70%,transparent);
@@ -317,6 +324,7 @@ pointer-events:none;
 transition:opacity .28s ease, transform .38s cubic-bezier(.22,.61,.36,1);
 min-width:clamp(260px,70vw,420px);
 overflow:hidden;
+z-index:2;
 }
 nav::before{
 content:"";
