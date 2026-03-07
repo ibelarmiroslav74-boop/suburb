@@ -439,6 +439,14 @@ text-decoration-thickness:2px;
 text-underline-offset:6px;
 text-shadow:0 0 12px color-mix(in srgb,var(--text) 45%,transparent);
 }
+nav a.active::after{
+content:'✓';
+display:inline-block;
+margin-left:8px;
+font-size:12px;
+line-height:1;
+vertical-align:middle;
+}
 nav.show a{
 opacity:1;
 transform:translateY(0);
@@ -1151,7 +1159,7 @@ contain-intrinsic-size:1px 900px;
 <script>
 (async function loadMenu(){
 const menuContainer=document.getElementById('menu-container');
-const menuCacheKey='murinsk-menu-cache-v1';
+const menuCacheKey='murinsk-menu-cache-v2';
 const cachedMenu=localStorage.getItem(menuCacheKey);
 
 function renderMenu(html){
@@ -1199,6 +1207,26 @@ if(window.__menuInitialized){
 return;
 }
 window.__menuInitialized=true;
+
+ensureSuburbLabel();
+
+function ensureSuburbLabel(){
+const logo=document.querySelector('#menu-container .logo');
+if(!logo){
+return;
+}
+let logoSub=logo.querySelector('.logo-sub');
+if(!logoSub){
+logoSub=document.createElement('span');
+logoSub.className='logo-sub';
+logoSub.dataset.i18n='logo.suburb';
+logo.appendChild(logoSub);
+}
+if(!logoSub.textContent.trim()){
+logoSub.textContent='пригород';
+}
+}
+
 const menuBtn=document.getElementById('menuBtn');
 const menu=document.getElementById('menu');
 const themeBtn=document.getElementById('themeBtn');
