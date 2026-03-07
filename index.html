@@ -1068,13 +1068,24 @@ const menuContainer=document.getElementById('menu-container');
 const menuCacheKey='murinsk-menu-cache-v1';
 const cachedMenu=localStorage.getItem(menuCacheKey);
 
+function renderMenu(html){
+if(typeof html!=='string'||!html.trim()){
+return;
+}
+if(menuContainer.innerHTML===html){
+return;
+}
+menuContainer.innerHTML=html;
+window.__menuInitialized=false;
+initializeMenuFunctions();
+}
+
 if(menuContainer.querySelector('#menuBtn')){
 initializeMenuFunctions();
 }
 
 if(cachedMenu){
-menuContainer.innerHTML=cachedMenu;
-initializeMenuFunctions();
+renderMenu(cachedMenu);
 }
 
 try{
@@ -1085,15 +1096,10 @@ throw new Error(`Menu request failed with status ${response.status}`);
 const html=await response.text();
 if(html&&html!==cachedMenu){
 localStorage.setItem(menuCacheKey,html);
-if(menuContainer.innerHTML!==html){
-menuContainer.innerHTML=html;
-window.__menuInitialized=false;
-initializeMenuFunctions();
-}
+renderMenu(html);
 }
 if(!cachedMenu&&!menuContainer.innerHTML.trim()){
-menuContainer.innerHTML=html;
-initializeMenuFunctions();
+renderMenu(html);
 }
 }catch(error){
 if(!cachedMenu){
