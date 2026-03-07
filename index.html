@@ -178,6 +178,10 @@ z-index:0;
 margin:14px 14px;
 padding:14px 18px;
 }
+.city-link{
+padding:10px 22px 10px 16px;
+font-size:9px;
+}
 }
 
 .logo{
@@ -215,6 +219,82 @@ text-shadow:0 1px 6px color-mix(in srgb,var(--bg) 70%,transparent);
 color:var(--text);
 text-decoration:none;
 }
+
+.city-link{
+font-family:'Unbounded',sans-serif;
+font-size:10px;
+font-weight:700;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(--text);
+text-decoration:none;
+position:relative;
+z-index:2;
+padding:11px 28px 11px 22px;
+min-height:36px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(140deg,color-mix(in srgb,var(--glass-pill) 86%,white 14%),color-mix(in srgb,var(--glass-pill) 92%,transparent));
+border:1px solid color-mix(in srgb,var(--glass-pill-border) 88%,transparent);
+box-shadow:0 12px 26px var(--shadow), inset 0 1px 0 var(--glass-pill-highlight);
+clip-path:polygon(0 0,86% 0,100% 50%,86% 100%,0 100%,14% 50%);
+transition:transform .28s ease, box-shadow .3s ease, border-color .3s ease;
+overflow:hidden;
+animation:cityFloat 3.6s ease-in-out infinite;
+}
+
+.city-link::before{
+content:"";
+position:absolute;
+inset:-1px;
+background:linear-gradient(120deg,transparent 20%,color-mix(in srgb,var(--glass-pill-highlight) 92%,transparent) 48%,transparent 80%);
+transform:translateX(-120%);
+animation:citySheen 3.4s ease-in-out infinite;
+pointer-events:none;
+}
+
+.city-link::after{
+content:"";
+position:absolute;
+inset:0;
+border:1px solid color-mix(in srgb,var(--glass-pill-highlight) 88%,transparent);
+clip-path:inherit;
+opacity:.5;
+pointer-events:none;
+}
+
+.city-link span{
+position:relative;
+z-index:1;
+}
+
+.city-link:hover{
+transform:translateY(-2px) scale(1.02);
+box-shadow:0 15px 30px var(--shadow), inset 0 1px 0 var(--glass-pill-highlight);
+border-color:color-mix(in srgb,var(--glass-pill-border) 100%,white 10%);
+animation-play-state:paused;
+}
+
+.city-link:hover::before{
+animation-play-state:paused;
+}
+
+.city-link:active{
+transform:translateY(0) scale(.98);
+}
+
+@keyframes citySheen{
+0%,30%{transform:translateX(-120%);opacity:0;}
+45%{opacity:.8;}
+60%,100%{transform:translateX(120%);opacity:0;}
+}
+
+@keyframes cityFloat{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-1px);}
+}
+
 
 .controls{
 display:flex;
@@ -438,6 +518,8 @@ contain-intrinsic-size:1px 900px;
         <span class="logo-main">Murinsk</span>
         <span class="logo-sub" data-i18n="logo.suburb">пригород</span>
       </a>
+
+      <a class="city-link" href="https://visitmurinsk.ru" target="_blank" rel="noopener noreferrer" data-i18n="nav.city" aria-label="Сайт города Murinsk"><span>Город</span></a>
 
       <div class="controls">
         <button id="langBtn" type="button" aria-label="Сменить язык">RU</button>
@@ -961,6 +1043,10 @@ contain-intrinsic-size:1px 900px;
             grid-template-columns: 1fr;
         }
 
+        .city-link {
+            display: none;
+        }
+
         .fact-card,
         .social-card {
             min-height: auto;
@@ -1259,7 +1345,7 @@ title:'Муринск - Пригород',
 description:'Пригород Муринска в Minecraft: районы, карта, скриншоты и развитие пригородной территории проекта Murinsk.'
 },
 logo:{suburb:'пригород'},
-nav:{home:'Главная',gallery:'Галерея',history:'История',review:'Оставить отзыв'},
+nav:{home:'Главная',gallery:'Галерея',city:'Город',history:'История',review:'Оставить отзыв'},
 hero:{title:'Пригород Муринска'},
 content:{
 item:'Муринск развивается как живой город внутри Minecraft.',
@@ -1277,7 +1363,7 @@ title:'Murinsk - Suburb',
 description:'Murinsk Suburb in Minecraft: districts, map, screenshots, and development of Murinsk suburban area.'
 },
 logo:{suburb:'suburb'},
-nav:{home:'Home',gallery:'Gallery',history:'History',review:'Leave a review'},
+nav:{home:'Home',gallery:'Gallery',city:'City',history:'History',review:'Leave a review'},
 hero:{title:'Murinsk Suburb'},
 content:{
 item:'Murinsk keeps growing as a living city inside Minecraft.',
